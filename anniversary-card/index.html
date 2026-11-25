@@ -11,9 +11,9 @@
 @media(max-width:650px){nav{gap:13px}.photo-grid{grid-template-columns:repeat(2,1fr);gap:9px}.photo-slot{min-height:185px;border-width:5px}.photo-grid .photo-slot:last-child{grid-column:auto}.chapter{padding-left:23px}section{padding:60px 16px}}
 @media(prefers-reduced-motion:no-preference){.hero-inner{animation:rise 1.1s ease both}@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}}
 
-.memories-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:30px}
-.memory{margin:0;position:relative;overflow:hidden;background:#f1e2df;border:7px solid #fff;box-shadow:0 8px 24px #76565a18;aspect-ratio:4/5}
-.memory img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.memories-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:clamp(240px,34vw,340px);gap:14px;margin-top:30px;align-items:stretch}
+.memory{margin:0;position:relative;overflow:hidden;background:#f1e2df;border:7px solid #fff;box-shadow:0 8px 24px #76565a18;height:100%;min-width:0;aspect-ratio:auto}
+.memory img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .5s ease}
 .memory:hover img{transform:scale(1.035)}
 .memory figcaption{position:absolute;right:9px;bottom:9px;background:#fffdf0df;color:#80575c;border-radius:30px;padding:5px 9px;font:10px Arial,sans-serif}
 .memory.unavailable{display:none}
@@ -26,7 +26,7 @@
 .lyrics summary{cursor:pointer;text-align:center;color:var(--deep);font:600 12px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
 .lyrics pre{white-space:pre-wrap;font:15px/1.9 Georgia,serif;color:#6e5a57;text-align:center;margin:24px auto 0}
 .promise-letter{background:#fff}
-@media(max-width:650px){.memories-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.memory{border-width:4px}}
+@media(max-width:650px){.memories-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(190px,58vw,270px);gap:9px}.memory{border-width:4px}}
 
 </style>
 </head>
