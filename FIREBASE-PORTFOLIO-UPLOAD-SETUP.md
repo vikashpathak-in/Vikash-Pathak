@@ -28,12 +28,7 @@ match /portfolioFiles/{fileId} {
 function isPortfolioAdmin() {
   return request.auth != null
     && request.auth.token.email_verified == true
-    && request.auth.token.email in [
-      'digicafe.admin@gmail.com',
-      'vikashpathak.mgmt@gmail.com',
-      'admin@digicafe.com',
-      'support@digicafe.com'
-    ];
+    && request.auth.token.email == 'vikashpathak.mgmt@gmail.com';
 }
 
 match /portfolio-pending/{uid}/{fileName} {
