@@ -10,6 +10,24 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif}.hero{min-height:92svh;display:grid;place-items:center;text-align:center;padding:64px 22px;background:radial-gradient(ellipse at 15% 15%,#fff 0,transparent 35%),linear-gradient(145deg,#fffaf7,#f2dfdc 65%,#ead1ce);position:relative;overflow:hidden}.hero:before,.hero:after{content:"✿";position:absolute;color:#c98e94;opacity:.2;font-size:clamp(100px,22vw,240px)}.hero:before{top:2%;left:-3%}.hero:after{right:-2%;bottom:0}.hero-inner{position:relative;z-index:1;max-width:760px}.eyebrow,.kicker{font:600 11px Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:var(--rose)}h1{font-size:clamp(48px,10vw,92px);line-height:.98;font-weight:400;margin:18px 0;color:#754c52}h1 em{font-weight:400;color:var(--rose)}.amp{font-size:.55em;color:var(--gold);display:block;margin:12px}.intro{font-size:clamp(17px,3vw,21px);line-height:1.7;color:#755f5c;max-width:590px;margin:24px auto}.date{display:inline-block;border-block:1px solid #c9a7a1;padding:12px 24px;margin-top:18px;font:600 12px Arial,sans-serif;letter-spacing:.2em;color:#80575c}.scroll{display:block;margin-top:40px;font:11px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}nav{position:sticky;top:0;z-index:5;background:#fffaf7ed;backdrop-filter:blur(10px);border-bottom:1px solid #f0e2dd;display:flex;justify-content:center;gap:22px;padding:14px 8px;flex-wrap:wrap}nav a{text-decoration:none;font:11px Arial,sans-serif;letter-spacing:.08em;color:var(--deep)}section{padding:76px 20px;max-width:1000px;margin:auto}.section-head{text-align:center;margin-bottom:34px}.section-head h2{font-size:clamp(31px,6vw,46px);font-weight:400;color:#754c52;margin:12px 0}.section-head p{font-size:16px;line-height:1.7;color:var(--muted);max-width:680px;margin:auto}.timeline{max-width:760px;margin:auto;position:relative}.chapter{position:relative;padding:0 0 44px 30px;border-left:1px solid #d9b9b4;margin-left:9px}.chapter:before{content:"";position:absolute;left:-6px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 5px #f5e4e1}.year{font:600 10px Arial,sans-serif;letter-spacing:.2em;color:var(--rose);text-transform:uppercase}.chapter h3{font-size:25px;font-weight:400;color:#80575c;margin:8px 0}.chapter p{font-size:16px;line-height:1.85;color:#6e5a57;margin:8px 0}.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:28px}.photo-slot{min-height:245px;aspect-ratio:4/5;border:8px solid white;background:linear-gradient(145deg,#f5e8e4,#ead5d1);box-shadow:0 8px 24px #76565a12;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:16px;color:#9b7476}.photo-slot .camera{font-size:30px;margin-bottom:12px}.photo-slot strong{font:600 11px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}.photo-slot span{font:12px/1.6 Arial,sans-serif;margin-top:8px;color:#9b8580}.photo-slot img{width:100%;height:100%;object-fit:cover;display:block}.photo-note{text-align:center;font:12px/1.7 Arial,sans-serif;color:var(--muted);margin-top:18px}.quote{background:#f5e8e4;text-align:center;padding:66px 24px}.quote blockquote{max-width:740px;margin:0 auto;font-size:clamp(22px,4vw,33px);line-height:1.55;font-style:italic;color:#80575c}.quote p{font:11px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);margin-top:22px}.letter{max-width:740px;margin:auto;background:#fff;padding:clamp(26px,6vw,54px);box-shadow:0 14px 50px #76565a12;border:1px solid #f0e2dd}.letter p{font-size:17px;line-height:1.9;color:#6e5a57}.signature{font-style:italic;font-size:27px!important;color:var(--rose)!important;margin-top:28px}.countdown{text-align:center;background:#fffaf7;border-block:1px solid #f0e2dd}.timer{display:flex;justify-content:center;gap:clamp(12px,4vw,42px);margin:30px 0}.unit strong{display:block;font-size:clamp(32px,7vw,54px);font-weight:400;color:var(--deep)}.unit span{font:10px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}footer{text-align:center;padding:38px 18px 54px;color:var(--muted);font-size:14px}footer .heart{color:var(--rose);font-size:24px}.small{font:11px Arial,sans-serif;color:#9b8580;margin-top:12px}
 @media(max-width:650px){nav{gap:13px}.photo-grid{grid-template-columns:repeat(2,1fr);gap:9px}.photo-slot{min-height:185px;border-width:5px}.photo-grid .photo-slot:last-child{grid-column:auto}.chapter{padding-left:23px}section{padding:60px 16px}}
 @media(prefers-reduced-motion:no-preference){.hero-inner{animation:rise 1.1s ease both}@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}}
+
+.memories-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:30px}
+.memory{margin:0;position:relative;overflow:hidden;background:#f1e2df;border:7px solid #fff;box-shadow:0 8px 24px #76565a18;aspect-ratio:4/5}
+.memory img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+.memory:hover img{transform:scale(1.035)}
+.memory figcaption{position:absolute;right:9px;bottom:9px;background:#fffdf0df;color:#80575c;border-radius:30px;padding:5px 9px;font:10px Arial,sans-serif}
+.memory.unavailable{display:none}
+.music-section{background:#f8eeeb}
+.music-card{max-width:720px;margin:auto;background:#fff;padding:clamp(24px,5vw,42px);text-align:center;border:1px solid #f0e2dd;box-shadow:0 14px 50px #76565a12}
+.music-heart{font-size:38px;color:var(--rose)}
+.music-subtitle,.music-note{font:12px/1.7 Arial,sans-serif;color:var(--muted)}
+.music-card audio{display:block;width:100%;margin:24px auto 10px}
+.lyrics{margin-top:24px;text-align:left;border-top:1px solid #f0e2dd;padding-top:18px}
+.lyrics summary{cursor:pointer;text-align:center;color:var(--deep);font:600 12px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.lyrics pre{white-space:pre-wrap;font:15px/1.9 Georgia,serif;color:#6e5a57;text-align:center;margin:24px auto 0}
+.promise-letter{background:#fff}
+@media(max-width:650px){.memories-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.memory{border-width:4px}}
+
 </style>
 </head>
 <body>
@@ -20,7 +38,7 @@
  <div class="date">MARRIED ON 01 DECEMBER 2021 · CELEBRATING 5 YEARS</div>
  <span class="scroll">Turn the pages of our story ↓</span>
 </div></header>
-<nav aria-label="Story navigation"><a href="#story">OUR STORY</a><a href="#photos">PHOTO ALBUM</a><a href="#letter">A LETTER</a></nav>
+<nav aria-label="Story navigation"><a href="#story">OUR STORY</a><a href="#photos">OUR MEMORIES</a><a href="#song">OUR SONG</a><a href="#promise">MY PROMISE</a><a href="#letter">A LETTER</a></nav>
 <main>
 <section id="story">
  <div class="section-head"><div class="kicker">2018 – 2026</div><h2>From a glance to forever</h2><p>Some love stories begin with three little words. Ours began quietly, with a first look, a phone number, and conversations that neither of us wanted to end.</p></div>
@@ -32,28 +50,179 @@
   <article class="chapter"><div class="year">01 December 2021 · Gaya</div><h3>Our wedding, our new beginning</h3><p>We got married in Gaya on 1 December 2021. After the wedding, we spent time at our home and visited Bodh Gaya together. Our friendship had become a marriage, and our next chapter was beginning.</p></article>
   <article class="chapter"><div class="year">2022 · Bengaluru</div><h3>A home and new adventures</h3><p>In 2022, we came to Bengaluru. Weekends became little opportunities to go out together. Chennai was our first trip, followed by Ooty, Coimbatore, Coorg and Rajgir, with many more journeys still to come.</p></article>
   <article class="chapter"><div class="year">Our favourite memories · Udupi</div><h3>Happiness in the journey</h3><p>Among our trips, Udupi is one of our best. We enjoyed it so much. And one thing makes every experience even better: when we are together with our family, that becomes the best part.</p></article>
-  <article class="chapter"><div class="year">Through every season · Together</div><h3>The person who understands me</h3><p>One thing I love most about Neha is that she listens to me without getting bored and understands me. When I shared my fertility-related worries with her, she reassured me. Her support reminded me that marriage means standing together through difficult moments, too.</p></article>
+  <article class="chapter"><div class="year">Through every season · Together</div><h3>The person who understands me</h3><p>One thing I love most about Neha is that she listens to me without getting bored and understands me. When life has felt uncertain, she has reassured me. Her support reminds me that marriage means standing together through difficult moments, too.</p></article>
   <article class="chapter"><div class="year">2026 · Still writing our story</div><h3>More memories are waiting</h3><p>From that first glance in Ranchi to the life we share today, our story is still growing. There are more places to visit, more family moments to cherish, and many more pages waiting to be written.</p></article>
  </div>
 </section>
 <div class="quote"><blockquote>“I want a girl like Neha.”</blockquote><p>The words that helped our story find its way</p></div>
 <section id="photos">
- <div class="section-head"><div class="kicker">Our photo album</div><h2>Moments we want to keep</h2><p>These spaces are reserved for your real photographs. We'll add your pictures to the matching chapters when you share them.</p></div>
- <div class="photo-grid">
-  <div class="photo-slot"><div class="camera">＋</div><strong>01 · Ranchi, 2018</strong><span>First meeting / cousin's home</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>02 · Friendship</strong><span>Early days and first memories</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>03 · Ring ceremony</strong><span>20 August 2021 · Family home</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>04 · Wedding</strong><span>01 December 2021 · Gaya</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>05 · Bodh Gaya</strong><span>Our first days after the wedding</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>06 · Chennai</strong><span>Our first trip together</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>07 · Ooty & Coimbatore</strong><span>Weekend adventures</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>08 · Coorg & Rajgir</strong><span>More places, more memories</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>09 · Udupi</strong><span>One of our happiest trips</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>10 · Family moments</strong><span>The best part of being together</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>11 · Everyday us</strong><span>Little moments that mean a lot</span></div>
-  <div class="photo-slot"><div class="camera">＋</div><strong>12 · 2026</strong><span>Our latest memories</span></div>
+ <div class="section-head"><div class="kicker">Our photo album</div><h2>Our Memories</h2><p>Every picture holds a little piece of our journey.</p></div>
+ <div class="memories-grid"><figure class="memory"><img loading="lazy" decoding="async" src="../photos/1637861157744.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>01</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/1638816012614.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>02</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/2022-12-28.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>03</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/90384b55d8623f7c5334f0d99d52a52e.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>04</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6326.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>05</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6327.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>06</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6328.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>07</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6332.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>08</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6333.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>09</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6334.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>10</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6336.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>11</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6339.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>12</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6342.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>13</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6345.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>14</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6354.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>15</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6366.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>16</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6387.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>17</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6473.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>18</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/DSC_6479.JPG" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>19</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG-20201220-WA0003.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>20</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG-20210507-WA0057.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>21</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG-20210820-WA0044.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>22</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG_0826.HEIC" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>23</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG_0844.HEIC" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>24</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG_0882.HEIC" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>25</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG_0899.HEIC" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>26</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG_20210820_193251.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>27</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG_20210820_204727.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>28</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG_20210820_213624.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>29</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG_20210828_091614.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>30</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/IMG_20211203_142921.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>31</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/InShot_20210621_220240344.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>32</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Remini20210622210712238.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>33</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Screenshot_20210507-182454.png" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>34</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Screenshot_20211109-205147.png" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>35</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Snapchat-1420896712.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>36</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Snapchat-1524610396.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>37</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Snapchat-1933288576.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>38</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Snapchat-303211813.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>39</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Snapchat-312032886.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>40</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Snapchat-533136747.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>41</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Snapchat-724365873.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>42</figcaption></figure>
+<figure class="memory"><img loading="lazy" decoding="async" src="../photos/Snapchat-829893996.jpg" alt="A memory of Vikash and Neha" onerror="this.closest('figure').classList.add('unavailable');this.remove()"><figcaption>43</figcaption></figure></div>
+ <p class="photo-note">43 photographs, one beautiful journey.</p>
+</section>
+<section id="song" class="music-section">
+ <div class="section-head"><div class="kicker">A song from my heart</div><h2>Har Haal Mein Tum</h2><p>A song written by Vikash for Neha.</p></div>
+ <div class="music-card">
+  <div class="music-heart">♫</div>
+  <p class="music-subtitle">Our 2018–2026 love story</p>
+  <audio controls preload="metadata" playsinline>
+   <source src="../music/paanch_saal_ka_safar%201.mp3" type="audio/mpeg">
+   Your browser does not support audio playback.
+  </audio>
+  <p class="music-note">Tap play to listen. The music will start only when you choose to play it.</p>
+  <details class="lyrics"><summary>Read the complete lyrics</summary><pre>Hmm... hmm...
+Neha... meri Neha...
+Yeh kahaani hai hum dono ki...
+
+Ranchi ki woh pehli mulaqat,
+Aankhon mein thi ek anjaani baat.
+Na kuch kaha, na kuch suna,
+Phir bhi dil ne tujhe apna chuna.
+
+Dheere dheere baatein badhti gayi,
+Dil ki dhadkan tujhse judti gayi.
+Jo lafz kabhi keh na paaya,
+Woh pyaar tune khud samajh paaya.
+
+Woh tera sunna, woh tera samajhna,
+Meri khamoshi mein bhi mujhe padhna.
+Har mushkil mein tune saath diya,
+Mere toote hausle ko phir se jiya.
+
+Tu hai toh meri duniya hai,
+Tu hai toh har khushi yahaan hai.
+Har haal mein tera saath nibhaunga,
+Har janam tujhe hi chaahunga.
+
+Tu mera ghar, tu mera sukoon,
+Tu hi meri har dua ka junoon.
+Chahe badal jaaye saara jahaan,
+Neha, tu hi rahegi meri jaan.
+
+Bees August ki woh pyaari shaam,
+Ek anguthi mein chhupa tha armaan.
+Pehli December, woh shaadi ka din,
+Tere sang shuru hua mera har din.
+
+Gaya se lekar Bengaluru tak,
+Yaadon ka safar chala yunhi.
+Udupi ki lehron, woh saare pal,
+Tere sang khoobsurat har ek kal.
+
+Ooty ki waadi, Coorg ki hawa,
+Har safar mein mila tera pyaar.
+Kabhi hansi, kabhi chhoti si takraar,
+Phir bhi tu hi hai mera pyaar.
+
+Kabhi main gussa ho jaata hoon,
+Kabhi apni baat manwaata hoon.
+Jab tu meri baat nahi sunti,
+Meri fikr gusse mein dhal jaati hai.
+
+Par jaan, main yeh maanta hoon,
+Kabhi tujhe bhi dukh pahunchata hoon.
+Maaf karna meri nadaani ko,
+Samajhna mere dil ki pareshaani ko.
+
+Main bhi koshish karta jaaunga,
+Khud ko behtar banaata jaaunga.
+Teri muskaan meri zimmedari nahi,
+Par teri khushi meri dua zaroor hai.
+
+Jab khud se bhi main lad raha tha,
+Tu mere saath khadi thi.
+Jab duniya se kuch keh na paaya,
+Tu meri himmat bani thi.
+
+Jab dil mein sawaal hazaar the,
+Tune mujhe hausle diye.
+Meri kamiyon ke beech bhi,
+Tune mujhko apna pyaar diya.
+
+Tere apne mere apne honge,
+Tere sapne mere sapne honge.
+Jaise tune mere ghar ko pyaar diya,
+Main bhi tere parivaar ko apna banaunga.
+
+Teri khushi mein meri khushi rahe,
+Tere har rishte ki izzat rahe.
+Na sirf tu, tera jahaan bhi mera,
+Yahi vaada hai, saathiya mera.
+
+Tu hai toh meri duniya hai,
+Tu hai toh har khushi yahaan hai.
+Har haal mein tera saath nibhaunga,
+Har janam tujhe hi chaahunga.
+
+Paanch saal ka yeh khoobsurat safar,
+Abhi toh baaki hai umr bhar.
+Na chahiye kuch aur is jahaan se,
+Bas tu rahe mere saath har mod pe.
+
+2018 mein shuru hui thi kahaani,
+Aaj bhi tu hai meri sabse pyaari nishaani.
+Na main perfect, na meri duniya,
+Par tujhse hi poori hai zindagi meri.
+
+Happy Anniversary, meri Neha...
+Main tumse bahut pyaar karta hoon.
+
+Tumhara,
+Vikash. ❤️</pre></details>
  </div>
- <p class="photo-note">Photo spaces are placeholders for now. Send the pictures tomorrow and we can place them in the right chapters.</p>
+</section>
+<section id="promise">
+ <div class="section-head"><div class="kicker">A promise from me to you</div><h2>My Promise to You</h2></div>
+ <article class="letter promise-letter">
+  <p>I know that sometimes I become rude or angry, especially when I feel that you are not listening to me. I worry about you and about us, but sometimes that worry comes out as anger. I know that does not make it right, and I am sorry for the times I hurt you.</p>
+  <p>I want you beside me through every situation, just as I want to stand beside you. Life feels incomplete without you, and I never want you to doubt how much you mean to me.</p>
+  <p>I promise to love and respect your family as my own, just as you love and respect mine. Your relationships matter to me because they are a part of your life.</p>
+  <p>I cannot promise to be perfect, but I promise to keep learning, to listen better, to understand you, and to keep becoming a better husband and partner.</p>
+  <p>Whatever life brings, I want it to be you and me, together. ❤️</p>
+  <p class="signature">Always yours, Vikash</p>
+ </article>
 </section>
 <section id="letter">
  <div class="section-head"><div class="kicker">A note from my heart</div><h2>For you, Neha</h2></div>
