@@ -106,12 +106,20 @@
  <div class="section-head"><div class="kicker">A song from my heart</div><h2>Har Haal Mein Tum</h2><p>A song written by Vikash for Neha.</p></div>
  <div class="music-card">
   <div class="music-heart">♫</div>
-  <p class="music-subtitle">Our 2018–2026 love story</p>
-  <audio controls preload="metadata" playsinline>
-   <source src="./music/paanch_saal_ka_safar%201.mp3" type="audio/mpeg">
+  <p class="music-subtitle">A little music to welcome you</p>
+  <audio id="opening-music" controls autoplay preload="auto" playsinline>
+   <source src="./music/monsoon_promise.mp3" type="audio/mpeg">
    Your browser does not support audio playback.
   </audio>
-  <p class="music-note">Tap play to listen. The music will start only when you choose to play it.</p>
+  <p class="music-note" id="opening-music-note">Trying to start the music automatically. If your browser blocks it, tap play above.</p>
+  <div class="lyrics" style="text-align:center;border-top:0;padding-top:4px">
+   <p class="music-subtitle">And this is the song I wrote for you</p>
+   <audio controls preload="metadata" playsinline>
+    <source src="./music/paanch_saal_ka_safar%201.mp3" type="audio/mpeg">
+    Your browser does not support audio playback.
+   </audio>
+  </div>
+  <p class="music-note">Listen to “Har Haal Mein Tum” whenever you like.</p>
   <details class="lyrics"><summary>Read the complete lyrics</summary><pre>Hmm... hmm...
 Neha... meri Neha...
 Yeh kahaani hai hum dono ki...
@@ -238,6 +246,22 @@ Vikash. ❤️</pre></details>
 </main>
 <footer><div class="heart">♥</div><p>Made with love, for Neha.</p><div class="small">Vikash & Neha · Married 01.12.2021</div></footer>
 <script>
+(function(){
+ const openingMusic=document.getElementById('opening-music');
+ const openingNote=document.getElementById('opening-music-note');
+ if(openingMusic){
+   const tryPlay=()=>openingMusic.play().then(()=>{
+     if(openingNote) openingNote.textContent='Our music is playing. ❤️';
+   }).catch(()=>{
+     if(openingNote) openingNote.textContent='Your browser may block autoplay. Tap play above to start our music. ❤️';
+   });
+   tryPlay();
+   document.addEventListener('pointerdown',function startOnce(){
+     if(openingMusic.paused) tryPlay();
+     document.removeEventListener('pointerdown',startOnce);
+   },{once:true});
+ }
+})();
 (function(){const target=new Date('2026-12-01T00:00:00+05:30').getTime();const ids=['days','hours','minutes','seconds'];function tick(){let diff=target-Date.now();if(diff<=0){ids.forEach(id=>document.getElementById(id).textContent='0');document.getElementById('countdown-note').textContent='Today is our day. Happy Anniversary! ❤️';return}const v=[Math.floor(diff/86400000),Math.floor(diff%86400000/3600000),Math.floor(diff%3600000/60000),Math.floor(diff%60000/1000)];ids.forEach((id,i)=>document.getElementById(id).textContent=String(v[i]).padStart(2,'0'))}tick();setInterval(tick,1000)})();
 </script>
 </body>
