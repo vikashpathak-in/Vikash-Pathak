@@ -17,6 +17,14 @@
 .memory:hover img{transform:scale(1.035)}
 .memory figcaption{position:absolute;right:9px;bottom:9px;background:#fffdf0df;color:#80575c;border-radius:30px;padding:5px 9px;font:10px Arial,sans-serif}
 .memory.unavailable{display:none}
+.hearts-rain{position:fixed;inset:0;z-index:8;overflow:hidden;pointer-events:none}
+.rain-heart{position:absolute;top:-12vh;color:#c56f83;text-shadow:0 2px 8px #b96f7940;animation:heart-fall linear infinite;will-change:transform,opacity}
+@keyframes heart-fall{0%{transform:translate3d(0,-8vh,0) rotate(0deg);opacity:0}10%{opacity:.72}85%{opacity:.62}100%{transform:translate3d(var(--drift),115vh,0) rotate(330deg);opacity:0}}
+.memory{animation:photo-float 7s ease-in-out infinite alternate;will-change:transform}
+.memory:nth-child(3n){animation-delay:-2.2s}
+.memory:nth-child(3n + 1){animation-delay:-4.4s}
+@keyframes photo-float{from{transform:translateY(0) rotate(-.25deg)}to{transform:translateY(-7px) rotate(.25deg)}}
+@media(prefers-reduced-motion:reduce){.rain-heart,.memory{animation:none!important;will-change:auto}}
 .music-section{background:#f8eeeb}
 .music-card{max-width:720px;margin:auto;background:#fff;padding:clamp(24px,5vw,42px);text-align:center;border:1px solid #f0e2dd;box-shadow:0 14px 50px #76565a12}
 .music-heart{font-size:38px;color:var(--rose)}
@@ -246,6 +254,24 @@ Vikash. ❤️</pre></details>
 </main>
 <footer><div class="heart">♥</div><p>Made with love, for Neha.</p><div class="small">Vikash & Neha · Married 01.12.2021</div></footer>
 <script>
+(function(){
+ if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const layer=document.createElement('div');
+ layer.className='hearts-rain';
+ layer.setAttribute('aria-hidden','true');
+ document.body.appendChild(layer);
+ for(let i=0;i<22;i++){
+   const heart=document.createElement('span');
+   heart.className='rain-heart';
+   heart.textContent=i%4===0?'♡':'♥';
+   heart.style.left=(i*47%100)+'%';
+   heart.style.animationDelay=(-((i*1.73)%18))+'s';
+   heart.style.animationDuration=(13+(i%7)*1.8)+'s';
+   heart.style.fontSize=(12+(i%5)*5)+'px';
+   heart.style.setProperty('--drift',((i%2===0?1:-1)*(18+(i%6)*9))+'px');
+   layer.appendChild(heart);
+ }
+})();
 (function(){
  const openingMusic=document.getElementById('opening-music');
  const openingNote=document.getElementById('opening-music-note');
