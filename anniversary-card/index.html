@@ -35,10 +35,29 @@
 .lyrics pre{white-space:pre-wrap;font:15px/1.9 Georgia,serif;color:#6e5a57;text-align:center;margin:24px auto 0}
 .promise-letter{background:#fff}
 @media(max-width:650px){.memories-grid{columns:2;column-gap:9px}.memory{margin-bottom:9px;border-width:4px}}
-
+/* Start screen and automatic story movement */
+.start-screen{position:fixed;inset:0;z-index:100;background:linear-gradient(145deg,#fffaf7f5,#f0d9d9f7);display:grid;place-items:center;padding:24px;text-align:center;backdrop-filter:blur(8px)}
+.start-panel{max-width:520px;background:#fffdfb;padding:38px 28px;border:1px solid #ead4d0;box-shadow:0 18px 60px #76565a24}
+.start-panel h2{font-size:clamp(32px,7vw,48px);font-weight:400;color:#80575c;margin:12px 0}
+.start-panel p{font:15px/1.7 Arial,sans-serif;color:#806d69}
+.start-button,.scroll-toggle{border:0;border-radius:30px;background:#9e5f6b;color:white;padding:14px 24px;font:600 13px Arial,sans-serif;letter-spacing:.08em;cursor:pointer;box-shadow:0 5px 18px #9e5f6b40}
+.scroll-toggle{position:fixed;right:14px;bottom:14px;z-index:30;padding:12px 16px;display:none}
+.rain-heart{opacity:.9}
+.memory{animation:photo-float 3.8s ease-in-out infinite alternate}
+@media(max-width:650px){.memory{animation-duration:3.2s}}
 </style>
 </head>
 <body>
+<div class="start-screen" id="start-screen">
+ <div class="start-panel">
+  <div class="music-heart">♥</div>
+  <h2>Our story, our memories</h2>
+  <p>A little music, a few memories, and a lifetime of love. Tap below to begin.</p>
+  <button class="start-button" id="start-story">Start our story ♥</button>
+  <p class="music-note">Music and the story's gentle movement will begin together.</p>
+ </div>
+</div>
+<button class="scroll-toggle" id="scroll-toggle" type="button">Pause story movement</button>
 <header class="hero"><div class="hero-inner">
  <div class="eyebrow" id="hero-eyebrow">A story written by two hearts</div>
  <h1>Vikash <span class="amp">&</span> <em>Neha</em></h1>
@@ -122,7 +141,7 @@
   <p class="music-note" id="opening-music-note">Trying to start the music automatically. If your browser blocks it, tap play above.</p>
   <div class="lyrics" style="text-align:center;border-top:0;padding-top:4px">
    <p class="music-subtitle">And this is the song I wrote for you</p>
-   <audio controls preload="metadata" playsinline>
+   <audio id="second-song" controls preload="metadata" playsinline>
     <source src="./music/paanch_saal_ka_safar%201.mp3" type="audio/mpeg">
     Your browser does not support audio playback.
    </audio>
@@ -255,37 +274,64 @@ Vikash. ❤️</pre></details>
 <footer><div class="heart">♥</div><p>Made with love, for Neha.</p><div class="small">Vikash & Neha · Married 01.12.2021</div></footer>
 <script>
 (function(){
- if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
  const layer=document.createElement('div');
  layer.className='hearts-rain';
  layer.setAttribute('aria-hidden','true');
  document.body.appendChild(layer);
- for(let i=0;i<22;i++){
+ for(let i=0;i<36;i++){
    const heart=document.createElement('span');
    heart.className='rain-heart';
    heart.textContent=i%4===0?'♡':'♥';
-   heart.style.left=(i*47%100)+'%';
-   heart.style.animationDelay=(-((i*1.37)%16))+'s';
-   heart.style.animationDuration=(9+(i%7)*1.35)+'s';
-   heart.style.fontSize=(16+(i%5)*5)+'px';
-   heart.style.setProperty('--drift',((i%2===0?1:-1)*(18+(i%6)*9))+'px');
+   heart.style.left=(i*37%100)+'%';
+   heart.style.animationDelay=(-((i*1.13)%15))+'s';
+   heart.style.animationDuration=(7+(i%6)*1.15)+'s';
+   heart.style.fontSize=(17+(i%5)*6)+'px';
+   heart.style.setProperty('--drift',((i%2===0?1:-1)*(20+(i%6)*10))+'px');
    layer.appendChild(heart);
  }
 })();
 (function(){
- const openingMusic=document.getElementById('opening-music');
- const openingNote=document.getElementById('opening-music-note');
- if(openingMusic){
-   const tryPlay=()=>openingMusic.play().then(()=>{
-     if(openingNote) openingNote.textContent='Our music is playing. ❤️';
-   }).catch(()=>{
-     if(openingNote) openingNote.textContent='Your browser may block autoplay. Tap play above to start our music. ❤️';
-   });
-   tryPlay();
-   document.addEventListener('pointerdown',function startOnce(){
-     if(openingMusic.paused) tryPlay();
-     document.removeEventListener('pointerdown',startOnce);
-   },{once:true});
+ const opening=document.getElementById('opening-music');
+ const second=document.getElementById('second-song');
+ const note=document.getElementById('opening-music-note');
+ const startScreen=document.getElementById('start-screen');
+ const startButton=document.getElementById('start-story');
+ const scrollButton=document.getElementById('scroll-toggle');
+ let moving=false,lastFrame=0,scrollFrame=null;
+ function moveStory(timestamp){
+  if(!moving)return;
+  if(!lastFrame)lastFrame=timestamp;
+  const elapsed=Math.min((timestamp-lastFrame)/1000,.05);
+  lastFrame=timestamp;
+  const max=document.documentElement.scrollHeight-window.innerHeight;
+  if(window.scrollY<max-1){window.scrollBy(0,18*elapsed);scrollFrame=requestAnimationFrame(moveStory);}
+  else{moving=false;scrollButton.textContent='Replay story movement';}
+ }
+ function setMoving(on){
+  moving=on;lastFrame=0;
+  if(scrollFrame)cancelAnimationFrame(scrollFrame);
+  scrollButton.textContent=on?'Pause story movement':'Resume story movement';
+  if(on)scrollFrame=requestAnimationFrame(moveStory);
+ }
+ startButton.addEventListener('click',async()=>{
+  startScreen.style.display='none';
+  scrollButton.style.display='block';
+  setMoving(true);
+  if(opening){
+   try{await opening.play();if(note)note.textContent='Our first music is playing. The next song will begin automatically. ❤️';}
+   catch(e){if(note)note.textContent='Tap Play in the music player to begin. The next song will follow automatically. ❤️';}
+  }
+ });
+ scrollButton.addEventListener('click',()=>{
+  if(window.scrollY>=document.documentElement.scrollHeight-window.innerHeight-2){window.scrollTo({top:0,behavior:'smooth'});setMoving(true);}
+  else setMoving(!moving);
+ });
+ if(opening&&second){
+  opening.addEventListener('ended',async()=>{
+   try{second.currentTime=0;await second.play();if(note)note.textContent='Now playing your song, Har Haal Mein Tum. ❤️';}
+   catch(e){if(note)note.textContent='The first track has ended. Tap Play on the second song below. ❤️';}
+  });
+  second.addEventListener('play',()=>{if(note)note.textContent='Now playing your song, Har Haal Mein Tum. ❤️';});
  }
 })();
 (function(){
