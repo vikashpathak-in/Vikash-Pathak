@@ -134,7 +134,7 @@ body.concise-experience #experience .job:nth-of-type(n+3){display:none}
 <div class="wrap">
   <nav aria-label="Main">
     <span class="name">Vikash Pathak</span>
-    <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#excel-work">Excel Work</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+    <a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#excel-work">Excel Work</a><a href="#documents">Documents</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme">Dark mode</button>
   </nav>
   <header class="hero">
@@ -192,6 +192,13 @@ body.concise-experience #experience .job:nth-of-type(n+3){display:none}
     <ul class="chips"><li>Excel Tables</li><li>COUNTIFS</li><li>INDEX / MATCH</li><li>IFERROR</li><li>IF</li><li>Filters</li><li>Conditional Formatting</li><li>Formula-based exception flags</li></ul>
     <div class="resume-note"><strong>Portfolio practice result:</strong> The fictional sample demonstrates 8 matched bank entries, 2 bank-side exceptions and 2 ledger-only entries. In a live reconciliation, each exception would be checked against supporting documents and resolved or carried forward with a reason.</div>
     <p style="margin:18px 0 0;color:var(--muted);font-size:14px">This is an independent demonstration workbook, not a claim that the sample transactions belong to my employer. It illustrates how I structure an Excel reconciliation and investigate differences.</p>
+  </section>
+
+  <section id="documents">
+    <h2 class="sec">Documents &amp; Work Samples</h2>
+    <p class="about">Selected spreadsheets, reports, guides, certificates and project files that I have reviewed and chosen to share. Only approved and published files appear here.</p>
+    <div id="portfolio-files" class="project-grid" aria-live="polite"><p style="color:var(--muted)">Loading published files…</p></div>
+    <p style="margin:14px 0 0;color:var(--muted);font-size:13px">Files are shared for portfolio and demonstration purposes. Please do not treat sample workbooks as financial or tax advice.</p>
   </section>
   <section id="projects">
     <h2 class="sec">Projects &amp; Practical Work</h2>
@@ -277,5 +284,20 @@ body.concise-experience #experience .job:nth-of-type(n+3){display:none}
 </script>
 
 <script src="https://vikashpathak-in.github.io/Digicafe/shared-experience.js?v=4" defer></script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
+import { getFirestore, collection, getDocs, query, where, orderBy } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+const firebaseConfig={apiKey:"AIzaSyDcdR-ba5Lh-DfG-wuABRntQm1sSYSr3Kk",authDomain:"digicafe-ee519.firebaseapp.com",projectId:"digicafe-ee519",storageBucket:"digicafe-ee519.firebasestorage.app",messagingSenderId:"582268562769",appId:"1:582268562769:web:720288e24fd8de7166f770"};
+const app=initializeApp(firebaseConfig,"portfolio-public-files");
+const db=getFirestore(app);
+const host=document.getElementById("portfolio-files");
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+try{
+ const snap=await getDocs(query(collection(db,"portfolioFiles"),where("status","==","published"),orderBy("publishedAt","desc")));
+ if(snap.empty){host.innerHTML='<p style="color:var(--muted)">No files have been published yet. Please check back later.</p>';}
+ else {host.innerHTML=snap.docs.map(d=>{const x=d.data();return '<article class="project-card"><div class="project-type">'+esc(x.category||"Work sample")+'</div><h3>'+esc(x.title||"Shared file")+'</h3><p>'+esc(x.description||"")+'</p><a href="'+esc(x.downloadURL||"#")+'" target="_blank" rel="noopener noreferrer">View / download file</a></article>';}).join("");}
+}catch(e){host.innerHTML='<p style="color:var(--muted)">The document library is being configured. Please check back soon.</p>';console.error("Portfolio document library:",e);}
+</script>
 </body>
 </html>
