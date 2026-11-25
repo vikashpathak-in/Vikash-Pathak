@@ -15,7 +15,7 @@ import {getFirestore,collection,addDoc,getDocs,getDoc,query,where,doc,updateDoc,
 import {getStorage,ref,uploadBytes,getBytes,getDownloadURL,deleteObject} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-storage.js";
 const cfg={apiKey:"AIzaSyDcdR-ba5Lh-DfG-wuABRntQm1sSYSr3Kk",authDomain:"digicafe-ee519.firebaseapp.com",projectId:"digicafe-ee519",storageBucket:"digicafe-ee519.firebasestorage.app",messagingSenderId:"582268562769",appId:"1:582268562769:web:720288e24fd8de7166f770"};
 const app=initializeApp(cfg,"portfolio-admin");const auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
-const ADMINS=["digicafe.admin@gmail.com","vikashpathak.mgmt@gmail.com","admin@digicafe.com","support@digicafe.com"];
+const ADMINS=["vikashpathak.mgmt@gmail.com"];
 const $=id=>document.getElementById(id);const status=m=>$("global-status").textContent=m;
 const safeName=n=>n.normalize("NFKD").replace(/[^a-zA-Z0-9._-]+/g,"_").replace(/^_+|_+$/g,"").slice(-100)||"upload";
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
