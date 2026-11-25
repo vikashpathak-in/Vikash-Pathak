@@ -8,12 +8,7 @@ The portfolio frontend and admin page use the existing Firebase project configur
 function isPortfolioAdmin() {
   return request.auth != null
     && request.auth.token.email_verified == true
-    && request.auth.token.email in [
-      'digicafe.admin@gmail.com',
-      'vikashpathak.mgmt@gmail.com',
-      'admin@digicafe.com',
-      'support@digicafe.com'
-    ];
+    && request.auth.token.email == 'vikashpathak.mgmt@gmail.com';
 }
 
 match /portfolioFiles/{fileId} {
@@ -63,7 +58,7 @@ match /portfolio-pending/{uid}/{fileName} {
 }
 ```
 
-The admin page only signs in; it does not create accounts. Create/verify the admin Firebase Authentication account using one of the four allowlisted emails. Do not put a password or service-account key in GitHub. The public portfolio reads only Firestore records with status = published. Draft objects are stored under portfolio-pending and are not public. Publishing copies the approved file to portfolio-published and then changes the Firestore status. If Storage or Firestore rules are not merged and deployed, upload/publish will fail closed.
+The admin page only signs in; it does not create accounts. Create/verify the Firebase Authentication account for vikashpathak.mgmt@gmail.com. This is the only authorised admin identity in the portfolio code and rules. Do not put a password or service-account key in GitHub. The public portfolio reads only Firestore records with status = published. Draft objects are stored under portfolio-pending and are not public. Publishing copies the approved file to portfolio-published and then changes the Firestore status. If Storage or Firestore rules are not merged and deployed, upload/publish will fail closed.
 
 ## Deployment checklist
 1. In Firebase Console, confirm Email/Password sign-in is enabled and create/verify your admin account using an allowlisted email.
