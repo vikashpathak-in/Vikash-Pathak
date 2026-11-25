@@ -287,16 +287,16 @@ body.concise-experience #experience .job:nth-of-type(n+3){display:none}
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
-import { getFirestore, collection, getDocs, query, where, orderBy } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
+import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 const firebaseConfig={apiKey:"AIzaSyDcdR-ba5Lh-DfG-wuABRntQm1sSYSr3Kk",authDomain:"digicafe-ee519.firebaseapp.com",projectId:"digicafe-ee519",storageBucket:"digicafe-ee519.firebasestorage.app",messagingSenderId:"582268562769",appId:"1:582268562769:web:720288e24fd8de7166f770"};
 const app=initializeApp(firebaseConfig,"portfolio-public-files");
 const db=getFirestore(app);
 const host=document.getElementById("portfolio-files");
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 try{
- const snap=await getDocs(query(collection(db,"portfolioFiles"),where("status","==","published"),orderBy("publishedAt","desc")));
+ const snap=await getDocs(query(collection(db,"portfolioFiles"),where("status","==","published")));
  if(snap.empty){host.innerHTML='<p style="color:var(--muted)">No files have been published yet. Please check back later.</p>';}
- else {host.innerHTML=snap.docs.map(d=>{const x=d.data();return '<article class="project-card"><div class="project-type">'+esc(x.category||"Work sample")+'</div><h3>'+esc(x.title||"Shared file")+'</h3><p>'+esc(x.description||"")+'</p><a href="'+esc(x.downloadURL||"#")+'" target="_blank" rel="noopener noreferrer">View / download file</a></article>';}).join("");}
+ else {const published=snap.docs.sort((a,b)=>(b.data().publishedAt?.seconds||0)-(a.data().publishedAt?.seconds||0));host.innerHTML=published.map(d=>{const x=d.data();return '<article class="project-card"><div class="project-type">'+esc(x.category||"Work sample")+'</div><h3>'+esc(x.title||"Shared file")+'</h3><p>'+esc(x.description||"")+'</p><a href="'+esc(x.downloadURL||"#")+'" target="_blank" rel="noopener noreferrer">View / download file</a></article>';}).join("");}
 }catch(e){host.innerHTML='<p style="color:var(--muted)">The document library is being configured. Please check back soon.</p>';console.error("Portfolio document library:",e);}
 </script>
 </body>
