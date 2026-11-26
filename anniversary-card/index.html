@@ -337,7 +337,7 @@ Vikash. ❤️</pre></details>
   const elapsed=Math.min((timestamp-lastFrame)/1000,.05);
   lastFrame=timestamp;
   const max=document.documentElement.scrollHeight-window.innerHeight;
-  if(window.scrollY<max-1){window.scrollBy(0,90*elapsed);scrollFrame=requestAnimationFrame(moveStory);}
+  if(window.scrollY<max-1){window.scrollBy(0,120*elapsed);scrollFrame=requestAnimationFrame(moveStory);}
   else{moving=false;scrollButton.textContent='Replay story movement';}
  }
  function setMoving(on){
