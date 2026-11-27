@@ -406,7 +406,8 @@ Vikash. ❤️</pre></details>
   storyImage=photoStory.querySelector('img');storyCaption=photoStory.querySelector('.photo-story-caption');
   storyCount=photoStory.querySelector('.photo-story-count');storyProgress=photoStory.querySelector('.photo-story-progress span');
   const pauseControl=photoStory.querySelector('[data-story-pause]');
-  const activeAudio=()=>second&&second.currentTime>0?second:opening;
+  let activeAudioTrack=opening;
+  const activeAudio=()=>activeAudioTrack||opening;
   const syncPause=()=>{if(pauseControl)pauseControl.textContent=(opening.paused&&( !second || second.paused))?'Play':'Pause';};
   pauseControl.addEventListener('click',async()=>{
    const audio=activeAudio();
@@ -422,7 +423,7 @@ Vikash. ❤️</pre></details>
    if(audio&&Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(audio.duration,audio.currentTime+amount));
    updateStory();
   }));
-  [opening,second].filter(Boolean).forEach(audio=>{audio.addEventListener('play',syncPause);audio.addEventListener('pause',syncPause);});
+  [opening,second].filter(Boolean).forEach(audio=>{audio.addEventListener('play',()=>{activeAudioTrack=audio;syncPause();});audio.addEventListener('pause',syncPause);});
 
   const ending=document.createElement('div');ending.className='story-ending';ending.id='story-ending';
   ending.innerHTML='<div><div class="envelope-art" aria-hidden="true"><div class="envelope-body"></div><div class="envelope-letter">Forever yours ♥</div><div class="envelope-flap"></div></div><h2>My love, my Neha</h2><p>Our song may end, but our story never will.<br>Happy Anniversary. I love you. ❤️</p></div>';
